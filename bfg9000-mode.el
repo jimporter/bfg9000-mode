@@ -116,7 +116,6 @@ Which one will be chosen depends on the value of
 ;;;###autoload
 (define-derived-mode bfg9000-mode python-mode "bfg9000"
   "Major mode for editing bfg9000 files."
-
   (setq-local font-lock-defaults
               `(,bfg9000-font-lock-keywords
                 nil nil nil nil
