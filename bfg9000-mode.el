@@ -1,6 +1,6 @@
 ;;; bfg9000-mode.el --- Major mode for bfg9000 files -*- lexical-binding: t -*-
 
-;; Copyright (C) 2021 Jim Porter
+;; Copyright (C) 2021-2022 Jim Porter
 
 ;; Author: Jim Porter
 ;; URL: https://github.com/jimporter/bfg9000-mode
@@ -27,9 +27,6 @@
 ;;; Code:
 
 (require 'python)
-
-;;;###autoload
-(add-to-list 'auto-mode-alist (cons (purecopy "\\.bfg\\'") 'bfg9000-mode))
 
 (defvar bfg9000-font-lock-keywords-level-1
   python-font-lock-keywords-level-1
@@ -121,6 +118,9 @@ Which one will be chosen depends on the value of
                 nil nil nil nil
                 (font-lock-syntactic-face-function
                  . python-font-lock-syntactic-face-function))))
+
+;;;###autoload
+(add-to-list 'auto-mode-alist '("\\.bfg\\'" 'bfg9000-mode))
 
 (provide 'bfg9000-mode)
 ;;; bfg9000-mode.el ends here
