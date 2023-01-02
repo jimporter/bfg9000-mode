@@ -1,6 +1,6 @@
 ;;; bfg9000-mode.el --- Major mode for bfg9000 files -*- lexical-binding: t -*-
 
-;; Copyright (C) 2021-2022 Jim Porter
+;; Copyright (C) 2021-2023 Jim Porter
 
 ;; Author: Jim Porter
 ;; URL: https://github.com/jimporter/bfg9000-mode
