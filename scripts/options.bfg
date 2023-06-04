@@ -1,0 +1,2 @@
+argument('file', help='Emacs Lisp file to generate')
+argument('keywords', default=dict(__bfg9000__))
