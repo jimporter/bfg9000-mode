@@ -151,7 +151,7 @@ Which one will be chosen depends on the value of
                  . python-font-lock-syntactic-face-function))))
 
 ;;;###autoload
-(add-to-list 'auto-mode-alist '("options\\.bfg\\'" . bfg9000-options-mode))
+(add-to-list 'auto-mode-alist '("/options\\.bfg\\'" . bfg9000-options-mode))
 
 (provide 'bfg9000-mode)
 ;;; bfg9000-mode.el ends here
