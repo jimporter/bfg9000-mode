@@ -1,4 +1,4 @@
-;;; bfg9000-mode.el --- Major mode for bfg9000 files -*- lexical-binding: t -*-
+;;; bfg9000-mode.el --- Major modes for bfg9000 files -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2021-2023 Jim Porter
 
