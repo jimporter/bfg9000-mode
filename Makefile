@@ -70,6 +70,6 @@ check:
 clean:
 	rm -f *.elc $(AUTOLOADS)
 
-.PHONY really-clean
+.PHONY: really-clean
 really-clean:
 	rm -f *.elc $(AUTOLOADS) $(GEN_SRCS)
