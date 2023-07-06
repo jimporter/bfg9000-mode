@@ -23,16 +23,15 @@
 ;;; Code:
 
 (defvar bfg9000--function-keywords
-  '("alias" "auto_file" "bfg9000_required_version" "boost_package" "build_step"
-    "command" "copy_file" "copy_files" "debug" "default" "directory"
-    "executable" "export" "extra_dist" "filter_by_platform" "find_files"
-    "find_paths" "framework" "generated_source" "generated_sources"
-    "generic_file" "global_link_options" "global_options" "header_directory"
-    "header_file" "info" "install" "library" "man_page" "module_def_file"
-    "object_file" "object_files" "package" "path_exists" "pkg_config"
-    "precompiled_header" "project" "relpath" "safe_format" "safe_str"
-    "shared_library" "source_file" "static_library" "submodule"
-    "system_executable" "test" "test_deps" "test_driver" "warning"
+  '("alias" "auto_file" "bfg9000_required_version" "build_step" "command"
+    "copy_file" "copy_files" "debug" "default" "directory" "executable" "export"
+    "extra_dist" "filter_by_platform" "find_files" "find_paths" "framework"
+    "generated_source" "generated_sources" "generic_file" "global_link_options"
+    "global_options" "header_directory" "header_file" "info" "install" "library"
+    "man_page" "module_def_file" "object_file" "object_files" "package"
+    "path_exists" "pkg_config" "precompiled_header" "project" "relpath"
+    "safe_format" "safe_str" "shared_library" "source_file" "static_library"
+    "submodule" "system_executable" "test" "test_deps" "test_driver" "warning"
     "whole_archive")
   "List of built-in function names for `bfg9000-mode'.")
 
@@ -45,8 +44,9 @@
   "List of built-in enum names for `bfg9000-mode'.")
 
 (defvar bfg9000--exception-keywords
-  '("CalledProcessError" "NonGlobError" "PackageResolutionError"
-    "PackageVersionError" "ToolNotFoundError" "VersionError")
+  '("AbortConfigure" "CalledProcessError" "NonGlobError"
+    "PackageResolutionError" "PackageVersionError" "SerializationError"
+    "ToolNotFoundError" "VersionError")
   "List of built-in exception names for `bfg9000-mode'.")
 
 (defvar bfg9000--type-keywords
@@ -67,13 +67,38 @@
   "List of built-in enum names for `bfg9000-options-mode'.")
 
 (defvar bfg9000-options--exception-keywords
-  '("CalledProcessError" "NonGlobError" "PackageResolutionError"
-    "PackageVersionError" "ToolNotFoundError" "VersionError")
+  '("AbortConfigure" "CalledProcessError" "NonGlobError"
+    "PackageResolutionError" "PackageVersionError" "SerializationError"
+    "ToolNotFoundError" "VersionError")
   "List of built-in exception names for `bfg9000-options-mode'.")
 
 (defvar bfg9000-options--type-keywords
   '("Path")
   "List of built-in type names for `bfg9000-options-mode'.")
+
+(defvar bfg9000-toolchain--function-keywords
+  '("bfg9000_required_version" "compile_options" "compiler" "debug" "info"
+    "install_dirs" "lib_options" "link_options" "linker" "runner" "safe_format"
+    "safe_str" "target_platform" "warning" "which")
+  "List of built-in function names for `bfg9000-toolchain-mode'.")
+
+(defvar bfg9000-toolchain--value-keywords
+  '("__bfg9000__" "__builtins__" "bfg9000_version" "environ" "srcdir")
+  "List of built-in value names for `bfg9000-toolchain-mode'.")
+
+(defvar bfg9000-toolchain--enum-keywords
+  '("InstallRoot" "Root")
+  "List of built-in enum names for `bfg9000-toolchain-mode'.")
+
+(defvar bfg9000-toolchain--exception-keywords
+  '("AbortConfigure" "CalledProcessError" "NonGlobError"
+    "PackageResolutionError" "PackageVersionError" "SerializationError"
+    "ToolNotFoundError" "VersionError")
+  "List of built-in exception names for `bfg9000-toolchain-mode'.")
+
+(defvar bfg9000-toolchain--type-keywords
+  '("Path")
+  "List of built-in type names for `bfg9000-toolchain-mode'.")
 
 (provide 'bfg9000-keywords)
 ;;; bfg9000-keywords.el ends here

@@ -1,6 +1,3 @@
-# Do this first, before we add any extraneous symbols below.
-build_names = sorted(__bfg9000__)
-
 license = """\
 Copyright (C) 2021-2023 Jim Porter
 
@@ -18,38 +15,11 @@ You should have received a copy of the GNU General Public License along with
 this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-import os
-from enum import Enum
-from inspect import isfunction
+import json, os, sys
+sys.path.append(os.path.dirname(__file__))
 from textwrap import dedent
 
-
-def collect_names(names, dictionary):
-    collected = {
-        'function': [],
-        'value': [],
-        'enum': [],
-        'exception': [],
-        'type': []
-    }
-
-    for i in names:
-        if i == '__builtins__':
-            continue
-
-        builtin = dictionary[i]
-        if isfunction(builtin):
-            collected['function'].append(i)
-        elif not isinstance(builtin, type):
-            collected['value'].append(i)
-        elif issubclass(builtin, Enum):
-            collected['enum'].append(i)
-        elif issubclass(builtin, Exception):
-            collected['exception'].append(i)
-        else:
-            collected['type'].append(i)
-
-    return collected
+from util import collect_names
 
 
 def print_names(names, kind, *, context='bfg9000', file=None):
@@ -81,8 +51,9 @@ def print_names(names, kind, *, context='bfg9000', file=None):
           .format(kind, context), file=file)
 
 
-build_names = collect_names(build_names, __bfg9000__)
-options_names = collect_names(sorted(argv.keywords), argv.keywords)
+build_names = collect_names(__bfg9000__)
+options_names = argv.keywords
+toolchain_names = json.loads(env.variables['BFG9000_TOOLCHAIN_BUILTINS'])
 basename = os.path.basename(argv.file)
 
 # Write the header for our output file.
@@ -112,6 +83,10 @@ with open(argv.file, 'w') as f:
         if names:
             print(file=f)
             print_names(names, kind, context='bfg9000-options', file=f)
+    for kind, names in toolchain_names.items():
+        if names:
+            print(file=f)
+            print_names(names, kind, context='bfg9000-toolchain', file=f)
 
     # Write the footer for our output file.
     print(dedent("""

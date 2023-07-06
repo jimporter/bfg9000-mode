@@ -1,1 +1,2 @@
 *.elc
+/scripts/__pycache__/

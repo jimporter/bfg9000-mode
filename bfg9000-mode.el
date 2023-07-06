@@ -153,5 +153,64 @@ Which one will be chosen depends on the value of
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("/options\\.bfg\\'" . bfg9000-options-mode))
 
+
+;; bfg9000-toolchain-mode
+
+(defvar bfg9000-toolchain-font-lock-keywords-level-1
+  python-font-lock-keywords-level-1
+  "Font lock keywords to use in `bfg9000-toolchain-mode' for level 1 decoration.
+
+This is the minimum decoration level, equivalent to
+`python-font-lock-keywords-level-1'.")
+
+(defvar bfg9000-toolchain-font-lock-keywords-level-2
+  `(,@python-font-lock-keywords-level-2
+    (,(bfg9000--symbol bfg9000-toolchain--function-keywords
+                       bfg9000-toolchain--value-keywords)
+     . font-lock-builtin-face))
+  "Font lock keywords to use in `bfg9000-toolchain-mode' for level 2 decoration.
+
+This is the medium decoration level, equivalent to
+`python-font-lock-keywords-level-2', plus bfg9000-specific builtin
+functions and values.")
+
+(defvar bfg9000-toolchain-font-lock-keywords-maximum-decoration
+  `(,@python-font-lock-keywords-maximum-decoration
+    (,(bfg9000--symbol bfg9000-toolchain--function-keywords
+                       bfg9000-toolchain--value-keywords)
+     . font-lock-builtin-face)
+    (,(bfg9000--symbol bfg9000-toolchain--enum-keywords)
+     . font-lock-constant-face)
+    (,(bfg9000--symbol bfg9000-toolchain--exception-keywords
+                       bfg9000-toolchain--type-keywords)
+     . font-lock-type-face))
+  "Font lock keywords to use in `bfg9000-toolchain-mode' for maximum decoration.
+
+This decoration level is equivalent to
+`python-font-lock-keywords-maximum-decoration', plus bfg9000-specific
+functions, values, enums, exceptions, and types.")
+
+(defvar bfg9000-toolchain-font-lock-keywords
+  '(bfg9000-toolchain-font-lock-keywords-level-1
+    bfg9000-toolchain-font-lock-keywords-level-1
+    bfg9000-toolchain-font-lock-keywords-level-2
+    bfg9000-toolchain-font-lock-keywords-maximum-decoration)
+  "List of font lock keyword specifications to use in `bfg9000-toolchain-mode'.
+
+Which one will be chosen depends on the value of
+`font-lock-maximum-decoration'.")
+
+;;;###autoload
+(define-derived-mode bfg9000-toolchain-mode python-mode "bfg9000[toolchain]"
+  "Major mode for editing bfg9000 toolchain files."
+  (setq-local font-lock-defaults
+              `(,bfg9000-toolchain-font-lock-keywords
+                nil nil nil nil
+                (font-lock-syntactic-face-function
+                 . python-font-lock-syntactic-face-function))))
+
+;;;###autoload
+(add-to-list 'auto-mode-alist '("toolchain\\.bfg\\'" . bfg9000-toolchain-mode))
+
 (provide 'bfg9000-mode)
 ;;; bfg9000-mode.el ends here

@@ -1,2 +1,6 @@
+import os, sys
+sys.path.append(os.path.dirname(__file__))
+from util import collect_names
+
 argument('file', help='Emacs Lisp file to generate')
-argument('keywords', default=dict(__bfg9000__))
+argument('keywords', default=collect_names(__bfg9000__))

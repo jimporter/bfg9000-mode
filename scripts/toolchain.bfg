@@ -1,0 +1,5 @@
+import json, os, sys
+sys.path.append(os.path.dirname(__file__))
+from util import collect_names
+
+environ['BFG9000_TOOLCHAIN_BUILTINS'] = json.dumps(collect_names(__bfg9000__))

@@ -41,7 +41,8 @@ $(AUTOLOADS): $(SRCS)
 
 bfg9000-keywords.el:
 	$(eval TMP := $(shell mktemp -dt bfg9000-mode.XXXXXXXXXX))
-	bfg9000 configure-into scripts $(TMP) --file=$(abspath $@)
+	bfg9000 configure-into scripts $(TMP) --file=$(abspath $@) \
+	  --toolchain=scripts/toolchain.bfg
 	@rm -rf $(TMP)
 
 %.elc: %.el
