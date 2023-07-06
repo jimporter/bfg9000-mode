@@ -83,7 +83,7 @@
   "List of built-in function names for `bfg9000-toolchain-mode'.")
 
 (defvar bfg9000-toolchain--value-keywords
-  '("__bfg9000__" "__builtins__" "bfg9000_version" "environ" "srcdir")
+  '("__bfg9000__" "bfg9000_version" "environ" "srcdir")
   "List of built-in value names for `bfg9000-toolchain-mode'.")
 
 (defvar bfg9000-toolchain--enum-keywords
