@@ -1,2 +1,4 @@
 *.elc
+/bfg9000-mode-autoloads.el
+/bfg9000-mode-pkg.el
 /scripts/__pycache__/
