@@ -16,8 +16,10 @@
 PACKAGE_NAME := bfg9000-mode
 PACKAGE_MAIN := $(PACKAGE_NAME).el
 AUTOLOADS := $(PACKAGE_NAME)-autoloads.el
+PKG_FILE := $(PACKAGE_NAME)-pkg.el
 GEN_SRCS := bfg9000-keywords.el
-SRCS := $(filter-out $(AUTOLOADS), $(sort $(wildcard *.el) $(GEN_SRCS)))
+SRCS := $(filter-out $(AUTOLOADS) $(PKG_FILE), \
+                     $(sort $(wildcard *.el) $(GEN_SRCS)))
 OBJS := $(patsubst %.el,%.elc,$(SRCS))
 
 EMACS ?= emacs
@@ -69,8 +71,8 @@ check:
 
 .PHONY: clean
 clean:
-	rm -f *.elc $(AUTOLOADS)
+	rm -f *.elc $(AUTOLOADS) $(PKG_FILE)
 
 .PHONY: really-clean
-really-clean:
-	rm -f *.elc $(AUTOLOADS) $(GEN_SRCS)
+really-clean: clean
+	rm -f $(GEN_SRCS)
